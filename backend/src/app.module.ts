@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
+import { User, UserSchema } from './user.schema';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://admin:adminpass@localhost:27017', {
       dbName: 'testdb',
     }),
+    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
   ],
   controllers: [AppController],
-  providers: [],
 })
 export class AppModule {}
