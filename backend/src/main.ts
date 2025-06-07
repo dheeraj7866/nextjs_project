@@ -10,7 +10,7 @@ async function bootstrap() {
     AppModule,
     new FastifyAdapter()
   );
-  await app.listen(4000);
+  await app.listen(4000, '0.0.0.0');
   console.log('🚀 Backend running on http://localhost:4000');
 }
 bootstrap();

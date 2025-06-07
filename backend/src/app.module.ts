@@ -5,7 +5,7 @@ import { User, UserSchema } from './user.schema';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://admin:adminpass@localhost:27017', {
+    MongooseModule.forRoot(process.env.MONGO_URI), {
       dbName: 'testdb',
     }),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
