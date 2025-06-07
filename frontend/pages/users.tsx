@@ -1,4 +1,3 @@
-// frontend/pages/users.tsx
 import { useEffect, useState } from 'react';
 
 interface User {
@@ -10,28 +9,25 @@ export default function UsersPage() {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:4000/users')
-      .then(res => res.json())
+    fetch('/api/users')
+      .then((res) => res.json())
       .then(setUsers)
-      .catch(err => {
-        console.error(err);
-        setUsers([]);
-      });
+      .catch(() => setUsers([]));
   }, []);
 
   return (
     <div style={{ padding: '2rem' }}>
       <h2>Users from MongoDB:</h2>
-      {users.length === 0 ? (
-        <p>No users found or error occurred.</p>
-      ) : (
+      {users.length ? (
         <ul>
-          {users.map((user, index) => (
-            <li key={index}>
-              <strong>{user.name}</strong> — {user.email}
+          {users.map((u, i) => (
+            <li key={i}>
+              <strong>{u.name}</strong> - {u.email}
             </li>
           ))}
         </ul>
+      ) : (
+        <p>No users found or error.</p>
       )}
     </div>
   );
