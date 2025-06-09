@@ -1,20 +1,21 @@
-# name: Build and Deploy
+name: Build and Deploy
 
-# on:
-#   push:
-#     branches: [main]
+on:
+  push:
+    branches: [main]
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v2
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
 
-#       - name: Docker Compose Build
-#         run: docker-compose build
+      - name: Docker Compose Build
+        run: echo \"Building start\"
+        run: docker-compose build
 
-#       - name: Run Tests (if any)
-#         run: echo \"No tests for now\"
+      - name: Run Tests (if any)
+        run: echo \"No tests for now\"
 
-#       - name: Deploy
-#         run: docker-compose up -d
+      - name: Deploy
+        run: docker-compose up -d
