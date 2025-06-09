@@ -82,6 +82,7 @@ pipeline {
         branch 'main'
       }
       steps {
+        input message: 'Approve production deployment?'
         echo "deploy to prod"
       }
     }
