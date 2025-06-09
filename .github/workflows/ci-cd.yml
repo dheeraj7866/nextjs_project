@@ -10,11 +10,23 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Docker Compose Build
+      - name: 🐳 Set up Docker
+        uses: docker/setup-docker-action@v2
+
+      - name: 🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🔧 Set up Docker Compose
+        run: |
+          sudo curl -L "https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
+
+      - name: 🧱 Docker Compose Build
         run: docker-compose build
 
-      - name: Run Tests (if any)
-        run: echo \"No tests for now\"
+      - name: ✅ Run Tests (if any)
+        run: echo "No tests for now"
 
-      - name: Deploy
+      - name: 🚀 Deploy with Docker Compose
         run: docker-compose up -d
