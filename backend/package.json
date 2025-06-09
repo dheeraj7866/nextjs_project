@@ -12,12 +12,15 @@
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-fastify": "^9.0.0",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^7.5.0"
+    "rxjs": "^7.5.0",
+    "@nestjs/mongoose": "^10.0.1",
+    "mongoose": "^7.8.7"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
+    "@types/mongoose": "^5.11.97",
     "typescript": "^5.0.0"
   }
 }
